@@ -37,8 +37,10 @@ class SignInPage extends StatelessWidget {
           children: [
             Text(
               'Email Address',
-              style:
-                  primaryTextStyle.copyWith(fontSize: 16, fontWeight: medium),
+              style: primaryTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: medium,
+              ),
             ),
             SizedBox(
               height: 12,
@@ -137,10 +139,11 @@ class SignInPage extends StatelessWidget {
         child: TextButton(
           onPressed: () {},
           style: TextButton.styleFrom(
-              backgroundColor: primaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              )),
+            backgroundColor: primaryColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
           child: Text(
             'Sign In',
             style: primaryTextStyle.copyWith(
@@ -162,11 +165,16 @@ class SignInPage extends StatelessWidget {
               'Don\'t have an account? ',
               style: subtitleTextStyle.copyWith(fontSize: 13),
             ),
-            Text(
-              'Sign Up',
-              style: purpleTextStyle.copyWith(
-                fontSize: 13,
-                fontWeight: medium,
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/sign-up');
+              },
+              child: Text(
+                'Sign Up',
+                style: purpleTextStyle.copyWith(
+                  fontSize: 13,
+                  fontWeight: medium,
+                ),
               ),
             )
           ],

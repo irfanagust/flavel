@@ -1,5 +1,6 @@
 import 'package:flavel/theme.dart';
 import 'package:flavel/widgets/product_card.dart';
+import 'package:flavel/widgets/product_tile.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -240,10 +241,42 @@ class HomePage extends StatelessWidget {
                   ProductCard(),
                   ProductCard(),
                   ProductCard(),
+                  ProductCard(),
                 ],
               ),
             ],
           ),
+        ),
+      );
+    }
+
+    Widget newArrivalProductsTitle() {
+      return Container(
+        margin: EdgeInsets.only(
+          top: defaultMargin,
+          left: defaultMargin,
+          right: defaultMargin,
+        ),
+        child: Text(
+          'New Arrivals',
+          style: primaryTextStyle.copyWith(
+            fontSize: 22,
+            fontWeight: semiBold,
+          ),
+        ),
+      );
+    }
+
+    Widget newArrivalProducts() {
+      return Container(
+        margin: const EdgeInsets.only(top: 14),
+        child: Column(
+          children: [
+            ProductTile(),
+            ProductTile(),
+            ProductTile(),
+            ProductTile(),
+          ],
         ),
       );
     }
@@ -254,6 +287,8 @@ class HomePage extends StatelessWidget {
         categories(),
         popularProductsTitle(),
         popularProducts(),
+        newArrivalProductsTitle(),
+        newArrivalProducts()
       ],
     );
   }

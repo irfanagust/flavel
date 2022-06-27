@@ -11,7 +11,7 @@ class ChatTile extends StatelessWidget {
         Navigator.pushNamed(context, '/detail-chat');
       },
       child: Container(
-        margin: const EdgeInsets.only(top: 33),
+        margin: const EdgeInsets.only(top: 15),
         child: Column(
           children: [
             Row(

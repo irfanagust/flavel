@@ -5,7 +5,7 @@ import 'package:flavel/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -17,10 +17,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => SplashPage(),
-        '/sign-in': (context) => SignInPage(),
-        '/sign-up': (context) => SignUpPage(),
-        '/home': (context) => MainPage(),
+        '/': (context) => const SplashPage(),
+        '/sign-in': (context) => const SignInPage(),
+        '/sign-up': (context) => const SignUpPage(),
+        '/home': (context) => const MainPage(),
       },
     );
   }

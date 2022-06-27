@@ -34,13 +34,12 @@ class _MainPageState extends State<MainPage> {
           top: Radius.circular(30),
         ),
         child: BottomAppBar(
-          shape: CircularNotchedRectangle(),
+          shape: const CircularNotchedRectangle(),
           notchMargin: 12,
           clipBehavior: Clip.antiAlias,
           child: BottomNavigationBar(
             currentIndex: currentIndex,
             onTap: (value) {
-              print(value);
               setState(() {
                 currentIndex = value;
               });
@@ -50,7 +49,7 @@ class _MainPageState extends State<MainPage> {
             items: [
               BottomNavigationBarItem(
                 icon: Container(
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                     top: 15,
                   ),
                   child: Image.asset(
@@ -63,7 +62,7 @@ class _MainPageState extends State<MainPage> {
               ),
               BottomNavigationBarItem(
                 icon: Container(
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                     top: 15,
                   ),
                   child: Image.asset(
@@ -76,7 +75,7 @@ class _MainPageState extends State<MainPage> {
               ),
               BottomNavigationBarItem(
                 icon: Container(
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                     top: 15,
                   ),
                   child: Image.asset(
@@ -89,7 +88,7 @@ class _MainPageState extends State<MainPage> {
               ),
               BottomNavigationBarItem(
                 icon: Container(
-                  margin: EdgeInsets.only(top: 15),
+                  margin: const EdgeInsets.only(top: 15),
                   child: Image.asset(
                     'assets/icon_profile.png',
                     width: 18,
@@ -107,19 +106,19 @@ class _MainPageState extends State<MainPage> {
     Widget body() {
       switch (currentIndex) {
         case 0:
-          return HomePage();
-          break;
+          return const HomePage();
+
         case 1:
-          return ChatPage();
-          break;
+          return const ChatPage();
+
         case 2:
-          return WishListPage();
-          break;
+          return const WishListPage();
+
         case 3:
-          return ProfilePage();
-          break;
+          return const ProfilePage();
+
         default:
-          return HomePage();
+          return const HomePage();
       }
     }
 

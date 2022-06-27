@@ -287,7 +287,7 @@ class SignUpPage extends StatelessWidget {
 
     Widget signUpButton() {
       return Container(
-        margin: EdgeInsets.only(top: 30),
+        margin: const EdgeInsets.only(top: 30),
         width: double.infinity,
         height: 50,
         child: TextButton(
@@ -310,7 +310,7 @@ class SignUpPage extends StatelessWidget {
 
     Widget footer() {
       return Container(
-        margin: EdgeInsets.only(bottom: 30),
+        margin: const EdgeInsets.only(bottom: 30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -351,7 +351,7 @@ class SignUpPage extends StatelessWidget {
               passwordInput(),
               passwordConfirmationInput(),
               signUpButton(),
-              Spacer(),
+              const Spacer(),
               footer(),
             ],
           ),

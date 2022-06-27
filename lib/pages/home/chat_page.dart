@@ -1,4 +1,5 @@
 import 'package:flavel/theme.dart';
+import 'package:flavel/widgets/chat_tile.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
@@ -8,6 +9,7 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget header() {
       return AppBar(
+        toolbarHeight: 90,
         backgroundColor: bgColor1,
         centerTitle: true,
         elevation: 0,
@@ -22,7 +24,7 @@ class ChatPage extends StatelessWidget {
       );
     }
 
-    Widget body() {
+    Widget emptyChat() {
       return Expanded(
         child: Container(
           width: double.infinity,
@@ -37,7 +39,7 @@ class ChatPage extends StatelessWidget {
             children: [
               Image.asset(
                 'assets/icon_headset.png',
-                width: 80,
+                width: 75,
               ),
               const SizedBox(height: 20),
               Text(
@@ -52,10 +54,8 @@ class ChatPage extends StatelessWidget {
                 'You have never done a transaction',
                 style: secondaryTextStyle,
               ),
-              const SizedBox(
-                height: 20,
-              ),
               Container(
+                margin: const EdgeInsets.only(top: 20),
                 height: 44,
                 width: 152,
                 child: TextButton(
@@ -79,6 +79,33 @@ class ChatPage extends StatelessWidget {
                   ),
                 ),
               ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    Widget body() {
+      return Expanded(
+        child: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.vertical(
+              top: Radius.circular(20),
+            ),
+            color: bgColor3,
+          ),
+          child: ListView(
+            padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+            children: [
+              ChatTile(),
+              ChatTile(),
+              ChatTile(),
+              ChatTile(),
+              ChatTile(),
+              ChatTile(),
+              ChatTile(),
+              ChatTile(),
             ],
           ),
         ),

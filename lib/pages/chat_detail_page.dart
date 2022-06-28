@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flavel/theme.dart';
+import 'package:flavel/widgets/chat_bubble.dart';
 import 'package:flutter/material.dart';
 
 class ChatDetailPage extends StatelessWidget {
@@ -67,6 +68,22 @@ class ChatDetailPage extends StatelessWidget {
             )
           ],
         ),
+      );
+    }
+
+    Widget content() {
+      return ListView(
+        padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+        children: [
+          ChatBubble(
+            isSender: true,
+            text: 'Hi, This item is still available?',
+          ),
+          ChatBubble(
+            isSender: false,
+            text: 'Good night, This item is only available in size 42 and 43',
+          ),
+        ],
       );
     }
 
@@ -162,6 +179,7 @@ class ChatDetailPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: chatInput(),
+      body: content(),
     );
   }
 }

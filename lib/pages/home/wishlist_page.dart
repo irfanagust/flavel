@@ -29,9 +29,6 @@ class WishListPage extends StatelessWidget {
           width: double.infinity,
           decoration: BoxDecoration(
             color: bgColor3,
-            borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(20),
-            ),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

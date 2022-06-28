@@ -73,11 +73,13 @@ class ChatDetailPage extends StatelessWidget {
 
     Widget content() {
       return ListView(
+        physics: const BouncingScrollPhysics(),
         padding: EdgeInsets.symmetric(horizontal: defaultMargin),
         children: [
           ChatBubble(
             isSender: true,
             text: 'Hi, This item is still available?',
+            hasProductAttached: true,
           ),
           ChatBubble(
             isSender: false,

@@ -61,6 +61,7 @@ class HomePage extends StatelessWidget {
         ),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
+          physics: const BouncingScrollPhysics(),
           child: Row(
             children: [
               SizedBox(
@@ -230,6 +231,7 @@ class HomePage extends StatelessWidget {
       return Container(
         margin: const EdgeInsets.only(top: 14),
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
@@ -282,6 +284,7 @@ class HomePage extends StatelessWidget {
     }
 
     return ListView(
+      physics: const BouncingScrollPhysics(),
       children: [
         header(),
         categories(),

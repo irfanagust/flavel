@@ -90,12 +90,10 @@ class ChatPage extends StatelessWidget {
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
-            borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(20),
-            ),
             color: bgColor3,
           ),
           child: ListView(
+            physics: const BouncingScrollPhysics(),
             padding: EdgeInsets.symmetric(horizontal: defaultMargin),
             children: [
               ChatTile(),

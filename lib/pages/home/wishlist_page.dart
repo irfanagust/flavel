@@ -1,4 +1,5 @@
 import 'package:flavel/theme.dart';
+import 'package:flavel/widgets/wishlist_card.dart';
 import 'package:flutter/material.dart';
 
 class WishListPage extends StatelessWidget {
@@ -23,7 +24,7 @@ class WishListPage extends StatelessWidget {
       );
     }
 
-    Widget body() {
+    Widget emptyWishlist() {
       return Expanded(
         child: Container(
           width: double.infinity,
@@ -84,10 +85,38 @@ class WishListPage extends StatelessWidget {
       );
     }
 
+    Widget content() {
+      return Expanded(
+        child: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: bgColor3,
+          ),
+          child: ListView(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            physics: const BouncingScrollPhysics(),
+            children: [
+              WishlistCard(),
+              WishlistCard(),
+              WishlistCard(),
+              WishlistCard(),
+              WishlistCard(),
+              WishlistCard(),
+              WishlistCard(),
+              WishlistCard(),
+              WishlistCard(),
+              WishlistCard(),
+            ],
+          ),
+        ),
+      );
+    }
+
     return Column(
       children: [
         header(),
-        body(),
+        content(),
+        // emptyWishlist()
       ],
     );
   }

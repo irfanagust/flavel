@@ -1,5 +1,7 @@
 import 'package:flavel/pages/chat_detail_page.dart';
 import 'package:flavel/pages/home/main_page.dart';
+import 'package:flavel/pages/product_page.dart';
+import 'package:flavel/pages/profile_edit_page.dart';
 import 'package:flavel/pages/sign_in_page.dart';
 import 'package:flavel/pages/sign_up_page.dart';
 import 'package:flavel/pages/splash_page.dart';
@@ -23,6 +25,8 @@ class MyApp extends StatelessWidget {
         '/sign-up': (context) => const SignUpPage(),
         '/home': (context) => const MainPage(),
         '/detail-chat': (context) => const ChatDetailPage(),
+        '/edit-profile': (context) => const ProfileEditPage(),
+        '/product': (context) => const ProductPage(),
       },
     );
   }

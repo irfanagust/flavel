@@ -1,3 +1,4 @@
+import 'package:flavel/pages/cart_page.dart';
 import 'package:flavel/pages/chat_detail_page.dart';
 import 'package:flavel/pages/home/main_page.dart';
 import 'package:flavel/pages/product_page.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         '/detail-chat': (context) => const ChatDetailPage(),
         '/edit-profile': (context) => const ProfileEditPage(),
         '/product': (context) => ProductPage(),
+        '/cart': (context) => CartPage(),
       },
     );
   }

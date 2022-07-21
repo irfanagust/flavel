@@ -184,25 +184,28 @@ class SignInPage extends StatelessWidget {
       );
     }
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        child: Container(
-          margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-          child: Column(
-            children: [
-              header(),
-              emailInput(),
-              passwordInput(),
-              signInButton(),
-              const Spacer(),
-              footer(),
-            ],
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: SafeArea(
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+            child: Column(
+              children: [
+                header(),
+                emailInput(),
+                passwordInput(),
+                signInButton(),
+                const Spacer(),
+                footer(),
+              ],
+              crossAxisAlignment: CrossAxisAlignment.start,
+            ),
           ),
         ),
+        backgroundColor: bgColor1,
       ),
-      backgroundColor: bgColor1,
     );
   }
 }

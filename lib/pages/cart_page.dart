@@ -140,30 +140,33 @@ class CartPage extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.all(defaultMargin),
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 13,
-                  horizontal: 20,
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: primaryColor,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Continue to Checkout',
-                      style: primaryTextStyle.copyWith(
-                        fontWeight: semiBold,
-                        fontSize: 16,
+              child: GestureDetector(
+                onTap: () => Navigator.pushNamed(context, '/checkout'),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 13,
+                    horizontal: 20,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: primaryColor,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Continue to Checkout',
+                        style: primaryTextStyle.copyWith(
+                          fontWeight: semiBold,
+                          fontSize: 16,
+                        ),
                       ),
-                    ),
-                    const Icon(
-                      Icons.arrow_forward_rounded,
-                      color: Colors.white,
-                    ),
-                  ],
+                      const Icon(
+                        Icons.arrow_forward_rounded,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

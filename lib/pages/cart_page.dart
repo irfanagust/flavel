@@ -1,8 +1,10 @@
 import 'package:flavel/theme.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/cart_card.dart';
+
 class CartPage extends StatelessWidget {
-  const CartPage({Key? key}) : super(key: key);
+  CartPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +38,8 @@ class CartPage extends StatelessWidget {
       );
     }
 
-    Widget content() {
-      return Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: bgColor3,
-        ),
+    Widget emptyCart() {
+      return Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -68,17 +66,104 @@ class CartPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
-              decoration: BoxDecoration(
-                color: primaryColor,
-                borderRadius: BorderRadius.circular(12),
+            GestureDetector(
+              onTap: () => Navigator.pushNamedAndRemoveUntil(
+                context,
+                '/home',
+                (route) => false,
               ),
-              child: Text(
-                'Explore Store',
-                style: primaryTextStyle.copyWith(
-                  fontSize: 16,
-                  fontWeight: medium,
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
+                decoration: BoxDecoration(
+                  color: primaryColor,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Text(
+                  'Explore Store',
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 16,
+                    fontWeight: medium,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    Widget content() {
+      return ListView(
+        padding: EdgeInsets.only(
+          top: 10,
+          left: defaultMargin,
+          right: defaultMargin,
+        ),
+        children: [
+          CartCard(),
+        ],
+      );
+    }
+
+    Widget customButtomNav() {
+      return Container(
+        height: 170,
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(
+                left: defaultMargin,
+                right: defaultMargin,
+                bottom: 20,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Subtotal',
+                    style: primaryTextStyle,
+                  ),
+                  Text(
+                    '\$287,96',
+                    style: priceTextStyle.copyWith(
+                      fontWeight: semiBold,
+                      fontSize: 16,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Divider(
+              color: subtitleTextColor,
+              thickness: 1,
+            ),
+            Container(
+              margin: EdgeInsets.all(defaultMargin),
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 13,
+                  horizontal: 20,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: primaryColor,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Continue to Checkout',
+                      style: primaryTextStyle.copyWith(
+                        fontWeight: semiBold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    const Icon(
+                      Icons.arrow_forward_rounded,
+                      color: Colors.white,
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -88,9 +173,10 @@ class CartPage extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: bgColor1,
+      backgroundColor: bgColor3,
       appBar: header(),
       body: content(),
+      bottomNavigationBar: customButtomNav(),
     );
   }
 }

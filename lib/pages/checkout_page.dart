@@ -1,10 +1,9 @@
 import 'package:flavel/theme.dart';
 import 'package:flavel/widgets/checkout_product_tile.dart';
-import 'package:flavel/widgets/product_tile.dart';
 import 'package:flutter/material.dart';
 
 class CheckoutPage extends StatelessWidget {
-  const CheckoutPage({Key? key}) : super(key: key);
+  CheckoutPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -364,25 +363,24 @@ class CheckoutPage extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.all(defaultMargin),
-            child: GestureDetector(
-              onTap: () {},
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 13,
-                  horizontal: 20,
-                ),
-                decoration: BoxDecoration(
+            height: 50,
+            child: TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: primaryColor,
+                shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
-                  color: primaryColor,
                 ),
-                child: Center(
-                  child: Text(
-                    'Checkout Now',
-                    style: primaryTextStyle.copyWith(
-                      fontWeight: semiBold,
-                      fontSize: 16,
-                    ),
-                  ),
+              ),
+              onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                context,
+                '/checkout/success',
+                (route) => false,
+              ),
+              child: Text(
+                'Checkout Now',
+                style: primaryTextStyle.copyWith(
+                  fontWeight: semiBold,
+                  fontSize: 16,
                 ),
               ),
             ),

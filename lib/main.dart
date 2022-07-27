@@ -1,6 +1,7 @@
 import 'package:flavel/pages/cart_page.dart';
 import 'package:flavel/pages/chat_detail_page.dart';
 import 'package:flavel/pages/checkout_page.dart';
+import 'package:flavel/pages/checkout_success_page.dart';
 import 'package:flavel/pages/home/main_page.dart';
 import 'package:flavel/pages/product_page.dart';
 import 'package:flavel/pages/profile_edit_page.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         '/product': (context) => ProductPage(),
         '/cart': (context) => CartPage(),
         '/checkout': (context) => CheckoutPage(),
+        '/checkout/success': (context) => CheckoutSuccessPage(),
       },
     );
   }

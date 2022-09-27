@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../widgets/cart_card.dart';
 
 class CartPage extends StatelessWidget {
+  // ignore: prefer_const_constructors_in_immutables
   CartPage({Key? key}) : super(key: key);
 
   @override
@@ -38,60 +39,60 @@ class CartPage extends StatelessWidget {
       );
     }
 
-    Widget emptyCart() {
-      return Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'assets/icon_empty_cart.png',
-              width: 80,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              'Opss! Your Cart is Empty',
-              style:
-                  primaryTextStyle.copyWith(fontSize: 16, fontWeight: medium),
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            Text(
-              'Let\'s find your favorite shoes',
-              style: subtitleTextStyle,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            GestureDetector(
-              onTap: () => Navigator.pushNamedAndRemoveUntil(
-                context,
-                '/home',
-                (route) => false,
-              ),
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
-                decoration: BoxDecoration(
-                  color: primaryColor,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Text(
-                  'Explore Store',
-                  style: primaryTextStyle.copyWith(
-                    fontSize: 16,
-                    fontWeight: medium,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    }
+    // Widget emptyCart() {
+    //   return Center(
+    //     child: Column(
+    //       crossAxisAlignment: CrossAxisAlignment.center,
+    //       mainAxisAlignment: MainAxisAlignment.center,
+    //       children: [
+    //         Image.asset(
+    //           'assets/icon_empty_cart.png',
+    //           width: 80,
+    //         ),
+    //         const SizedBox(
+    //           height: 20,
+    //         ),
+    //         Text(
+    //           'Opss! Your Cart is Empty',
+    //           style:
+    //               primaryTextStyle.copyWith(fontSize: 16, fontWeight: medium),
+    //         ),
+    //         const SizedBox(
+    //           height: 12,
+    //         ),
+    //         Text(
+    //           'Let\'s find your favorite shoes',
+    //           style: subtitleTextStyle,
+    //         ),
+    //         const SizedBox(
+    //           height: 20,
+    //         ),
+    //         GestureDetector(
+    //           onTap: () => Navigator.pushNamedAndRemoveUntil(
+    //             context,
+    //             '/home',
+    //             (route) => false,
+    //           ),
+    //           child: Container(
+    //             padding:
+    //                 const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
+    //             decoration: BoxDecoration(
+    //               color: primaryColor,
+    //               borderRadius: BorderRadius.circular(12),
+    //             ),
+    //             child: Text(
+    //               'Explore Store',
+    //               style: primaryTextStyle.copyWith(
+    //                 fontSize: 16,
+    //                 fontWeight: medium,
+    //               ),
+    //             ),
+    //           ),
+    //         ),
+    //       ],
+    //     ),
+    //   );
+    // }
 
     Widget content() {
       return ListView(

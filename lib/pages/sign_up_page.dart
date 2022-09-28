@@ -1,29 +1,50 @@
 import 'package:flavel/providers/auth_provider.dart';
 import 'package:flavel/theme.dart';
+import 'package:flavel/widgets/loading_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable, use_key_in_widget_constructors
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
   TextEditingController nameController = TextEditingController(text: '');
+
   TextEditingController usernameController = TextEditingController(text: '');
+
   TextEditingController emailController = TextEditingController(text: '');
+
   TextEditingController passwordController = TextEditingController(text: '');
 
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
-    // AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
 
-    handleSignUp() {
-      // if (await authProvider.register(
-      //   name: nameController.text,
-      //   username: usernameController.text,
-      //   email: emailController.text,
-      //   password: passwordController.text,
-      // )) {
-      //   Navigator.pushNamed(context, '/home');
-      // }
-      print(nameController.text);
+    handleSignUp() async {
+      setState(() {
+        isLoading = true;
+      });
+
+      if (await authProvider.register(
+        name: nameController.text,
+        username: usernameController.text,
+        email: emailController.text,
+        password: passwordController.text,
+      )) {
+        Navigator.pushNamed(context, '/home');
+      }else{
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(backgroundColor: alertColor,content: Text('Register Failed', textAlign: TextAlign.center,),)
+        );
+      }
+
+      setState(() {
+        isLoading = false;
+      });
     }
 
     Widget header() {
@@ -86,6 +107,8 @@ class SignUpPage extends StatelessWidget {
                       child: TextFormField(
                         style: primaryTextStyle,
                         controller: nameController,
+                        textInputAction: TextInputAction.next,
+                        onEditingComplete: () => FocusScope.of(context).nextFocus(),
                         decoration: InputDecoration.collapsed(
                           hintText: 'Your Full Name',
                           hintStyle: subtitleTextStyle,
@@ -140,6 +163,8 @@ class SignUpPage extends StatelessWidget {
                       child: TextFormField(
                         controller: usernameController,
                         style: primaryTextStyle,
+                        textInputAction: TextInputAction.next,
+                        onEditingComplete: () => FocusScope.of(context).nextFocus(),
                         decoration: InputDecoration.collapsed(
                           hintText: 'Your Username',
                           hintStyle: subtitleTextStyle,
@@ -191,6 +216,8 @@ class SignUpPage extends StatelessWidget {
                       child: TextFormField(
                         controller: emailController,
                         style: primaryTextStyle,
+                        textInputAction: TextInputAction.next,
+                        onEditingComplete: () => FocusScope.of(context).nextFocus(),
                         decoration: InputDecoration.collapsed(
                           hintText: 'Your Email Address',
                           hintStyle: subtitleTextStyle,
@@ -243,6 +270,8 @@ class SignUpPage extends StatelessWidget {
                         controller: passwordController,
                         style: primaryTextStyle,
                         obscureText: true,
+                        textInputAction: TextInputAction.done,
+                        onFieldSubmitted: (_) => FocusScope.of(context).unfocus(),
                         decoration: InputDecoration.collapsed(
                           hintText: 'Your Password',
                           hintStyle: subtitleTextStyle,
@@ -264,7 +293,7 @@ class SignUpPage extends StatelessWidget {
         width: double.infinity,
         height: 50,
         child: TextButton(
-          onPressed: () => handleSignUp,
+          onPressed: () => handleSignUp(),
           style: TextButton.styleFrom(
             backgroundColor: primaryColor,
             shape: RoundedRectangleBorder(
@@ -320,7 +349,7 @@ class SignUpPage extends StatelessWidget {
               usernameInput(),
               emailInput(),
               passwordInput(),
-              signUpButton(),
+              isLoading ? LoadingButton() : signUpButton(),
               const Spacer(),
               footer(),
             ],

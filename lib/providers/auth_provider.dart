@@ -1,4 +1,4 @@
-import 'package:flavel/model/user_model.dart';
+import 'package:flavel/models/user_model.dart';
 import 'package:flavel/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +30,6 @@ class AuthProvider with ChangeNotifier {
 
       return true;
     } catch (e) {
-      print(e);
       return false;
     }
   }

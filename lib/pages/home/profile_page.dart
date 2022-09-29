@@ -1,11 +1,17 @@
+import 'package:flavel/models/user_model.dart';
+import 'package:flavel/providers/auth_provider.dart';
 import 'package:flavel/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    UserModel user = authProvider.user;
+
     Widget appBar() {
       return AppBar(
         elevation: 0,
@@ -28,14 +34,14 @@ class ProfilePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Hallo, Irfan',
+                        'Hallo, ${user.name}',
                         style: primaryTextStyle.copyWith(
                           fontWeight: semiBold,
                           fontSize: 24,
                         ),
                       ),
                       Text(
-                        '@irfantiawan',
+                        '@${user.username}',
                         style: subtitleTextStyle.copyWith(fontSize: 16),
                       ),
                     ],

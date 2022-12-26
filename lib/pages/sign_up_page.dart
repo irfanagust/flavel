@@ -25,6 +25,8 @@ class _SignUpPageState extends State<SignUpPage> {
     AuthProvider authProvider = Provider.of<AuthProvider>(context);
 
     handleSignUp() async {
+      FocusManager.instance.primaryFocus?.unfocus();
+      
       setState(() {
         isLoading = true;
       });
@@ -36,10 +38,14 @@ class _SignUpPageState extends State<SignUpPage> {
         password: passwordController.text,
       )) {
         Navigator.pushNamed(context, '/home');
-      }else{
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(backgroundColor: alertColor,content: Text('Register Failed', textAlign: TextAlign.center,),)
-        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: alertColor,
+          content: Text(
+            'Register Failed',
+            textAlign: TextAlign.center,
+          ),
+        ));
       }
 
       setState(() {
@@ -55,8 +61,10 @@ class _SignUpPageState extends State<SignUpPage> {
           children: [
             Text(
               'Sign Up',
-              style:
-                  primaryTextStyle.copyWith(fontSize: 24, fontWeight: semiBold),
+              style: primaryTextStyle.copyWith(
+                fontSize: 24,
+                fontWeight: semiBold,
+              ),
             ),
             const SizedBox(
               height: 2,
@@ -164,7 +172,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         controller: usernameController,
                         style: primaryTextStyle,
                         textInputAction: TextInputAction.next,
-                        onEditingComplete: () => FocusScope.of(context).nextFocus(),
+                        onEditingComplete: () =>
+                            FocusScope.of(context).nextFocus(),
                         decoration: InputDecoration.collapsed(
                           hintText: 'Your Username',
                           hintStyle: subtitleTextStyle,
@@ -217,7 +226,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         controller: emailController,
                         style: primaryTextStyle,
                         textInputAction: TextInputAction.next,
-                        onEditingComplete: () => FocusScope.of(context).nextFocus(),
+                        onEditingComplete: () =>
+                            FocusScope.of(context).nextFocus(),
                         decoration: InputDecoration.collapsed(
                           hintText: 'Your Email Address',
                           hintStyle: subtitleTextStyle,
@@ -271,7 +281,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         style: primaryTextStyle,
                         obscureText: true,
                         textInputAction: TextInputAction.done,
-                        onFieldSubmitted: (_) => FocusScope.of(context).unfocus(),
+                        onFieldSubmitted: (_) =>
+                            FocusScope.of(context).unfocus(),
                         decoration: InputDecoration.collapsed(
                           hintText: 'Your Password',
                           hintStyle: subtitleTextStyle,
@@ -335,24 +346,27 @@ class _SignUpPageState extends State<SignUpPage> {
       );
     }
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: bgColor1,
-      body: SafeArea(
-        child: Container(
-          margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              header(),
-              fullnameInput(),
-              usernameInput(),
-              emailInput(),
-              passwordInput(),
-              isLoading ? LoadingButton() : signUpButton(),
-              const Spacer(),
-              footer(),
-            ],
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: bgColor1,
+        body: SafeArea(
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                header(),
+                fullnameInput(),
+                usernameInput(),
+                emailInput(),
+                passwordInput(),
+                isLoading ? LoadingButton() : signUpButton(),
+                const Spacer(),
+                footer(),
+              ],
+            ),
           ),
         ),
       ),

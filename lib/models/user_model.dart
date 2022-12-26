@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class UserModel {
   int? id;
   String? name;
@@ -23,7 +21,7 @@ class UserModel {
     email = json['email'];
     username = json['username'];
     profilePhotoUrl = json['profile_photo_url'];
-    token = json['json'];
+    token = json['token'];
   }
 
   Map<String, dynamic> toJson() {

@@ -13,10 +13,10 @@ class AuthProvider with ChangeNotifier {
   }
 
   Future<bool> register({
-    String? name,
-    String? username,
-    String? email,
-    String? password,
+    required String name,
+    required String username,
+    required String email,
+    required String password,
   }) async {
     try {
       UserModel user = await AuthService().register(
@@ -30,13 +30,14 @@ class AuthProvider with ChangeNotifier {
 
       return true;
     } catch (e) {
+      debugPrint(e.toString());
       return false;
     }
   }
 
   Future<bool> login({
-    String? email,
-    String? password,
+    required String email,
+    required String password,
   }) async {
     try {
       UserModel user = await AuthService().login(
@@ -48,6 +49,7 @@ class AuthProvider with ChangeNotifier {
 
       return true;
     } catch (e) {
+      debugPrint(e.toString());
       return false;
     }
   }

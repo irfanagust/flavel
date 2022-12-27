@@ -47,13 +47,14 @@ class HomePage extends StatelessWidget {
             Container(
               width: 54,
               height: 54,
-              decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: AssetImage(
-                      'assets/image_profile.png',
-                    ),
-                  )),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: NetworkImage(
+                    user.profilePhotoUrl,
+                  ),
+                ),
+              ),
             ),
           ],
         ),

@@ -26,7 +26,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
     handleSignUp() async {
       FocusManager.instance.primaryFocus?.unfocus();
-      
+
       setState(() {
         isLoading = true;
       });
@@ -41,7 +41,7 @@ class _SignUpPageState extends State<SignUpPage> {
       } else {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: alertColor,
-          content: Text(
+          content: const Text(
             'Register Failed',
             textAlign: TextAlign.center,
           ),
@@ -362,7 +362,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 usernameInput(),
                 emailInput(),
                 passwordInput(),
-                isLoading ? LoadingButton() : signUpButton(),
+                isLoading ? const LoadingButton() : signUpButton(),
                 const Spacer(),
                 footer(),
               ],

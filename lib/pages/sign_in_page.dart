@@ -33,7 +33,13 @@ class _SignInPageState extends State<SignInPage> {
       )) {
         Navigator.pushNamed(context, '/home');
       }else{
-        SnackBar(backgroundColor: alertColor,content: Text('Login Failed', textAlign: TextAlign.center,),);
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: alertColor,
+          content: const Text(
+            'Login Failed',
+            textAlign: TextAlign.center,
+          ),
+        ));
       }
 
       setState(() {

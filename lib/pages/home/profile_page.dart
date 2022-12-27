@@ -22,9 +22,17 @@ class ProfilePage extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             child: Row(
               children: [
-                Image.asset(
-                  'assets/image_profile.png',
-                  width: 64,
+                Container(
+                  width: 54,
+                  height: 54,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        user.profilePhotoUrl,
+                      ),
+                    ),
+                  ),
                 ),
                 const SizedBox(
                   width: 16,

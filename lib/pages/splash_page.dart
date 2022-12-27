@@ -25,9 +25,9 @@ class _SplashPageState extends State<SplashPage> {
     return Scaffold(
       body: Center(
           child: Container(
-        height: 150,
-        width: 130,
-        decoration: const BoxDecoration(
+          height: 150,
+          width: 130,
+          decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/image_splash.png'),
           ),

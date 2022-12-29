@@ -9,6 +9,7 @@ import 'package:flavel/pages/sign_in_page.dart';
 import 'package:flavel/pages/sign_up_page.dart';
 import 'package:flavel/pages/splash_page.dart';
 import 'package:flavel/providers/auth_provider.dart';
+import 'package:flavel/providers/product_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -25,6 +26,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => AuthProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ProductProvider(),
         ),
       ],
       child: MaterialApp(

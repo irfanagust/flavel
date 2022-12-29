@@ -1,8 +1,11 @@
+import 'package:flavel/models/product_model.dart';
 import 'package:flavel/theme.dart';
 import 'package:flutter/material.dart';
 
 class ProductTile extends StatelessWidget {
-  const ProductTile({Key? key}) : super(key: key);
+  
+  late final ProductModel product;
+  ProductTile(this.product);
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +21,8 @@ class ProductTile extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                'assets/image_shoes2.png',
+              child: Image.network(
+                product.galery![0].url,
                 width: 120,
                 height: 120,
                 fit: BoxFit.cover,
@@ -33,7 +36,7 @@ class ProductTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Casual',
+                    product.category?.name ?? '',
                     style: secondaryTextStyle.copyWith(
                       fontSize: 12,
                     ),
@@ -42,17 +45,19 @@ class ProductTile extends StatelessWidget {
                     height: 6,
                   ),
                   Text(
-                    'Predator 20.3 Firm Ground',
+                    product.name ?? '',
                     style: primaryTextStyle.copyWith(
                       fontSize: 16,
                       fontWeight: semiBold,
                     ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                   ),
                   const SizedBox(
                     height: 6,
                   ),
                   Text(
-                    '\$73,73',
+                    '\$${product.price.toString()}',
                     style: priceTextStyle.copyWith(
                       fontSize: 14,
                       fontWeight: medium,

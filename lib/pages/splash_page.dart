@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:flavel/providers/product_provider.dart';
 import 'package:flavel/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -12,11 +14,14 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   @override
+  
+  getInit() async {
+    await Provider.of<ProductProvider>(context, listen: false).getProducts();
+    Navigator.pushNamed(context, '/sign-in');
+  }
+
   void initState() {
-    Timer(
-      const Duration(seconds: 3),
-      () => Navigator.pushNamed(context, '/sign-in'),
-    );
+    getInit();
     super.initState();
   }
 

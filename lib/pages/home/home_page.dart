@@ -1,5 +1,6 @@
 import 'package:flavel/models/user_model.dart';
 import 'package:flavel/providers/auth_provider.dart';
+import 'package:flavel/providers/product_provider.dart';
 import 'package:flavel/theme.dart';
 import 'package:flavel/widgets/product_card.dart';
 import 'package:flavel/widgets/product_tile.dart';
@@ -13,6 +14,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     AuthProvider authProvider = Provider.of<AuthProvider>(context);
     UserModel user = authProvider.user;
+    ProductProvider productProvider = Provider.of<ProductProvider>(context);
 
     Widget header() {
       return Container(
@@ -246,12 +248,7 @@ class HomePage extends StatelessWidget {
                 width: defaultMargin,
               ),
               Row(
-                children: [
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
-                ],
+                children: productProvider.products.map((product) => ProductCard(product)).toList(),
               ),
             ],
           ),
@@ -280,12 +277,7 @@ class HomePage extends StatelessWidget {
       return Container(
         margin: const EdgeInsets.only(top: 14),
         child: Column(
-          children: [
-            ProductTile(),
-            ProductTile(),
-            ProductTile(),
-            ProductTile(),
-          ],
+          children: productProvider.products.map((e) => ProductTile(e)).toList(),
         ),
       );
     }

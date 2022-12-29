@@ -1,8 +1,11 @@
+import 'package:flavel/models/product_model.dart';
 import 'package:flavel/theme.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({Key? key}) : super(key: key);
+  
+  late final ProductModel product;
+  ProductCard(this.product);
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +25,8 @@ class ProductCard extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            Image.asset(
-              'assets/image_shoes.png',
+            Image.network(
+              product.galery![0].url,
               width: 215,
               height: 150,
               fit: BoxFit.cover,
@@ -33,7 +36,7 @@ class ProductCard extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    'Running',
+                    product.category?.name ?? '',
                     style: secondaryTextStyle.copyWith(
                       fontSize: 12,
                     ),
@@ -49,12 +52,13 @@ class ProductCard extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    'COURT VISION 2.0',
+                    product.name ?? '',
                     style: productNameTextStyle.copyWith(
                       fontSize: 18,
                       fontWeight: semiBold,
                     ),
                     overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                   ),
                 ],
               ),
@@ -67,7 +71,7 @@ class ProductCard extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    '\$59,99',
+                    '\$${product.price.toString()}',
                     style: priceTextStyle.copyWith(
                       fontSize: 14,
                       fontWeight: medium,
